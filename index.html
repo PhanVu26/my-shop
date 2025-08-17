@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Cafe Nâu - Cà phê rang xay chuẩn vị nhà</title>
+  <meta name="description" content="Cafe Nâu - Cà phê rang xay chuẩn vị nhà. Mua cà phê hạt rang, cà phê xay, dụng cụ pha chế. Freeship đơn từ 299k, đổi trả 7 ngày.">
+  <meta property="og:title" content="Cafe Nâu - Cà phê rang xay chuẩn vị nhà">
+  <meta property="og:description" content="Cafe Nâu - Cà phê rang xay chuẩn vị nhà. Mua cà phê hạt rang, cà phê xay, dụng cụ pha chế. Freeship đơn từ 299k, đổi trả 7 ngày.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cafe Nâu">
+  <meta property="og:image" content="https://picsum.photos/seed/cafenau/600/315">
+  <link rel="icon" href="https://picsum.photos/seed/cafenau/32/32" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main: #4E342E;
+      --accent: #FFC107;
+      --bg: #FAF6F2;
+      --text: #2D1B12;
+      --radius: 18px;
+      --shadow: 0 2px 8px rgba(78,52,46,0.07);
+      --focus: 0 0 0 3px #FFC10780;
+    }
+    html { box-sizing: border-box; }
+    *, *:before, *:after { box-sizing: inherit; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.6;
+    }
+    a { color: var(--main); text-decoration: none; }
+    a:focus, button:focus, input:focus, select:focus, textarea:focus {
+      outline: none;
+      box-shadow: var(--focus);
+    }
+    header {
+      background: #fff;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--main);
+      letter-spacing: 1px;
+    }
+    nav {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+    nav a {
+      font-weight: 500;
+      padding: 8px 0;
+      border-bottom: 2px solid transparent;
+      transition: border 0.2s;
+    }
+    nav a:hover, nav a.active {
+      border-bottom: 2px solid var(--accent);
+    }
+    .cart-btn {
+      position: relative;
+      background: var(--main);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      padding: 10px 18px 10px 38px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      min-width: 44px;
+      min-height: 44px;
+      transition: background 0.2s;
+    }
+    .cart-btn:hover, .cart-btn:focus {
+      background: #3e271e;
+    }
+    .cart-btn .cart-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2em;
+    }
+    .cart-badge {
+      position: absolute;
+      top: 6px;
+      right: 10px;
+      background: var(--accent);
+      color: var(--main);
+      font-size: 0.95em;
+      font-weight: 700;
+      border-radius: 50%;
+      min-width: 22px;
+      min-height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 4px #0001;
+      pointer-events: none;
+    }
+    /* Hero */
+    .hero {
+      background: linear-gradient(120deg, #fff 60%, #ffe7b0 100%);
+      padding: 38px 0 28px 0;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.1rem;
+      color: var(--main);
+      margin: 0 0 10px 0;
+      font-weight: 700;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: #6d4c41;
+      margin-bottom: 28px;
+    }
+    .hero .cta-btn {
+      background: var(--accent);
+      color: var(--main);
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 14px 38px;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      min-width: 44px;
+      min-height: 44px;
+      transition: background 0.2s;
+    }
+    .hero .cta-btn:hover, .hero .cta-btn:focus {
+      background: #ffd54f;
+    }
+    /* Sản phẩm */
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--main);
+      margin: 36px 0 18px 0;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .filter-bar input[type="search"] {
+      border: 1.5px solid #e0cfc2;
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      font-size: 1rem;
+      min-width: 180px;
+      background: #fff;
+      transition: border 0.2s;
+    }
+    .filter-bar select {
+      border: 1.5px solid #e0cfc2;
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      font-size: 1rem;
+      background: #fff;
+      min-width: 120px;
+      transition: border 0.2s;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      margin-bottom: 32px;
+    }
+    @media (min-width: 600px) {
+      .products-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 900px) {
+      .products-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    @media (min-width: 1200px) {
+      .products-grid { grid-template-columns: 1fr 1fr 1fr 1fr; }
+    }
+    .product-card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px 14px 18px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      min-width: 0;
+      min-height: 100%;
+      transition: box-shadow 0.2s;
+    }
+    .product-card:hover, .product-card:focus-within {
+      box-shadow: 0 4px 16px #4e342e18;
+    }
+    .product-card img {
+      width: 100%;
+      max-width: 160px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      background: #f5f5f5;
+      box-shadow: 0 1px 4px #0001;
+    }
+    .product-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--accent);
+      color: var(--main);
+      font-size: 0.95em;
+      font-weight: 700;
+      border-radius: 12px;
+      padding: 3px 12px;
+      box-shadow: 0 1px 4px #0001;
+    }
+    .product-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--main);
+      margin-bottom: 4px;
+      text-align: center;
+    }
+    .product-desc {
+      font-size: 0.98rem;
+      color: #6d4c41;
+      margin-bottom: 8px;
+      text-align: center;
+      min-height: 36px;
+    }
+    .product-price {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--main);
+      margin-bottom: 12px;
+    }
+    .add-cart-btn {
+      background: var(--main);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 12px 24px;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      min-width: 44px;
+      min-height: 44px;
+      transition: background 0.2s;
+    }
+    .add-cart-btn:hover, .add-cart-btn:focus {
+      background: #3e271e;
+    }
+    /* Ưu đãi */
+    .offers {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    @media (min-width: 600px) {
+      .offers { flex-direction: row; justify-content: center; }
+    }
+    .offer-card {
+      background: #fffbe7;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px 28px;
+      color: var(--main);
+      font-weight: 600;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 180px;
+    }
+    .offer-card .offer-icon {
+      font-size: 1.5em;
+      color: var(--accent);
+    }
+    /* Đánh giá */
+    .reviews {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    @media (min-width: 600px) {
+      .reviews { flex-direction: row; justify-content: center; }
+    }
+    .review-card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px 22px;
+      min-width: 180px;
+      max-width: 260px;
+      color: var(--main);
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .review-stars {
+      color: #FFD600;
+      font-size: 1.1em;
+      letter-spacing: 1px;
+    }
+    .review-name {
+      font-weight: 700;
+      font-size: 1em;
+      color: var(--main);
+    }
+    /* Liên hệ */
+    .contact-section {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px 18px 18px 18px;
+      margin: 0 auto 32px auto;
+      max-width: 500px;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .contact-form input, .contact-form textarea {
+      border: 1.5px solid #e0cfc2;
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      font-size: 1rem;
+      background: #fff;
+      resize: none;
+      transition: border 0.2s;
+    }
+    .contact-form textarea { min-height: 60px; }
+    .contact-form button {
+      background: var(--accent);
+      color: var(--main);
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 13px 0;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      min-width: 44px;
+      min-height: 44px;
+      transition: background 0.2s;
+    }
+    .contact-form button:hover, .contact-form button:focus {
+      background: #ffd54f;
+    }
+    .contact-info {
+      font-size: 1.02rem;
+      color: var(--main);
+      margin-bottom: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .contact-social {
+      display: flex;
+      gap: 14px;
+      margin-top: 8px;
+    }
+    .contact-social a {
+      color: var(--main);
+      font-size: 1.3em;
+      background: #ffe7b0;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .contact-social a:hover, .contact-social a:focus {
+      background: var(--accent);
+      color: var(--main);
+    }
+    /* Giỏ hàng */
+    .cart-panel-backdrop {
+      position: fixed;
+      inset: 0;
+      background: #0006;
+      z-index: 100;
+      display: none;
+      transition: opacity 0.2s;
+    }
+    .cart-panel-backdrop.active { display: block; }
+    .cart-panel {
+      position: fixed;
+      top: 0; right: 0;
+      width: 100%;
+      max-width: 370px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -2px 0 16px #4e342e22;
+      z-index: 101;
+      transform: translateX(100%);
+      transition: transform 0.25s cubic-bezier(.4,1.2,.4,1);
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+    }
+    .cart-panel.active { transform: translateX(0); }
+    .cart-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 22px 10px 22px;
+      border-bottom: 1.5px solid #f3e7d7;
+      background: #fff;
+    }
+    .cart-panel-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--main);
+    }
+    .cart-panel-close {
+      background: none;
+      border: none;
+      font-size: 1.6em;
+      color: var(--main);
+      cursor: pointer;
+      border-radius: 50%;
+      min-width: 44px;
+      min-height: 44px;
+      transition: background 0.2s;
+    }
+    .cart-panel-close:hover, .cart-panel-close:focus {
+      background: #ffe7b0;
+    }
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 18px 0 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #fffbe7;
+      border-radius: 12px;
+      padding: 10px 10px 10px 0;
+      box-shadow: 0 1px 4px #0001;
+      position: relative;
+    }
+    .cart-item img {
+      width: 54px;
+      height: 54px;
+      object-fit: cover;
+      border-radius: 10px;
+      background: #f5f5f5;
+    }
+    .cart-item-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .cart-item-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--main);
+    }
+    .cart-item-price {
+      font-size: 0.98rem;
+      color: #6d4c41;
+    }
+    .cart-item-qty {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .cart-item-qty-btn {
+      background: var(--accent);
+      color: var(--main);
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      font-size: 1.2em;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      box-shadow: 0 1px 4px #0001;
+      min-width: 32px;
+      min-height: 32px;
+    }
+    .cart-item-qty-btn:hover, .cart-item-qty-btn:focus {
+      background: #ffd54f;
+    }
+    .cart-item-remove {
+      background: none;
+      border: none;
+      color: #b71c1c;
+      font-size: 1.2em;
+      cursor: pointer;
+      border-radius: 50%;
+      min-width: 32px;
+      min-height: 32px;
+      transition: background 0.2s;
+      position: absolute;
+      top: 8px;
+      right: 8px;
+    }
+    .cart-item-remove:hover, .cart-item-remove:focus {
+      background: #ffe7b0;
+    }
+    .cart-panel-footer {
+      padding: 16px 22px 18px 22px;
+      border-top: 1.5px solid #f3e7d7;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .cart-total {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--main);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .checkout-btn {
+      background: var(--main);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1.07rem;
+      font-weight: 700;
+      padding: 13px 0;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      min-width: 44px;
+      min-height: 44px;
+      transition: background 0.2s;
+      margin-top: 6px;
+    }
+    .checkout-btn:hover, .checkout-btn:focus {
+      background: #3e271e;
+    }
+    /* Footer */
+    footer {
+      background: var(--main);
+      color: #fff;
+      text-align: center;
+      padding: 18px 0 12px 0;
+      font-size: 1rem;
+      border-radius: var(--radius) var(--radius) 0 0;
+      margin-top: 32px;
+    }
+    .footer-links {
+      margin-top: 6px;
+      font-size: 0.98em;
+    }
+    .footer-links a {
+      color: var(--accent);
+      margin: 0 8px;
+      text-decoration: underline;
+    }
+    /* Misc */
+    ::selection { background: #ffe7b0; }
+    @media (max-width: 500px) {
+      .header-inner, .container { padding: 0 6px; }
+      .contact-section { padding: 18px 4px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <div class="logo" aria-label="Cafe Nâu">Cafe Nâu</div>
+      <nav>
+        <a href="#san-pham">Sản phẩm</a>
+        <a href="#uu-dai">Ưu đãi</a>
+        <a href="#lien-he">Liên hệ</a>
+      </nav>
+      <button class="cart-btn" id="cartBtn" aria-label="Giỏ hàng">
+        <span class="cart-icon">🛒</span>
+        Giỏ hàng <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Cà phê rang xay chuẩn vị nhà</h1>
+      <p>Khám phá hương vị cà phê nguyên chất, dụng cụ pha chế hiện đại. Đặt hàng dễ dàng, giao tận nơi!</p>
+      <button class="cta-btn" id="heroCtaBtn">Mua ngay</button>
+    </section>
+
+    <section id="san-pham" class="container">
+      <div class="section-title">Sản phẩm nổi bật</div>
+      <div class="filter-bar">
+        <input type="search" id="searchInput" placeholder="Tìm sản phẩm..." aria-label="Tìm kiếm sản phẩm">
+        <select id="categorySelect" aria-label="Lọc theo danh mục">
+          <option value="">Tất cả danh mục</option>
+          <option value="Hạt rang">Hạt rang</option>
+          <option value="Cà phê xay">Cà phê xay</option>
+          <option value="Dụng cụ">Dụng cụ</option>
+        </select>
+      </div>
+      <div class="products-grid" id="productsGrid"></div>
+    </section>
+
+    <section id="uu-dai" class="container">
+      <div class="section-title">Ưu đãi & Chính sách</div>
+      <div class="offers">
+        <div class="offer-card"><span class="offer-icon">🚚</span> Freeship đơn từ 299.000₫</div>
+        <div class="offer-card"><span class="offer-icon">🔄</span> Đổi trả trong 7 ngày</div>
+        <div class="offer-card"><span class="offer-icon">☕</span> Cam kết cà phê nguyên chất</div>
+      </div>
+      <div class="reviews">
+        <div class="review-card">
+          <div>“Cà phê thơm ngon, giao hàng nhanh!”</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-name">Minh T.</div>
+        </div>
+        <div class="review-card">
+          <div>“Dụng cụ pha rất chất lượng, dễ dùng.”</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-name">Lan P.</div>
+        </div>
+        <div class="review-card">
+          <div>“Hỗ trợ nhiệt tình, sẽ ủng hộ dài lâu.”</div>
+          <div class="review-stars">★★★★☆</div>
+          <div class="review-name">Quang H.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="lien-he" class="container">
+      <div class="section-title">Liên hệ & Đặt hàng nhanh</div>
+      <div class="contact-section">
+        <form class="contact-form" id="contactForm" autocomplete="off">
+          <input type="text" name="name" placeholder="Tên của bạn" required minlength="2" aria-label="Tên">
+          <input type="tel" name="phone" placeholder="Số điện thoại" required pattern="0[0-9]{9,10}" aria-label="Số điện thoại">
+          <input type="email" name="email" placeholder="Email" required aria-label="Email">
+          <textarea name="note" placeholder="Ghi chú (tuỳ chọn)" aria-label="Ghi chú"></textarea>
+          <button type="submit">Gửi</button>
+        </form>
+        <div class="contact-info">
+          <div><b>Địa chỉ:</b> 123 Lê Lợi, Q.1</div>
+          <div><b>Hotline:</b> <a href="tel:0909000000">0909 000 000</a></div>
+          <div><b>Email:</b> <a href="mailto:hello@cafenau.vn">hello@cafenau.vn</a></div>
+        </div>
+        <div class="contact-social">
+          <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><span>📘</span></a>
+          <a href="https://zalo.me/" target="_blank" aria-label="Zalo"><span>💬</span></a>
+          <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><span>📸</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="cart-panel-backdrop" id="cartBackdrop"></div>
+  <aside class="cart-panel" id="cartPanel" aria-label="Giỏ hàng">
+    <div class="cart-panel-header">
+      <span class="cart-panel-title">Giỏ hàng</span>
+      <button class="cart-panel-close" id="cartCloseBtn" aria-label="Đóng giỏ hàng">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-panel-footer">
+      <div class="cart-total">
+        <span>Tổng cộng:</span>
+        <span id="cartTotal">0₫</span>
+      </div>
+      <button class="checkout-btn" id="checkoutBtn">Thanh toán</button>
+    </div>
+  </aside>
+
+  <footer>
+    © <span id="footerYear"></span> Cafe Nâu.
+    <div class="footer-links">
+      <a href="#uu-dai">Chính sách</a> |
+      <a href="#lien-he">Liên hệ</a>
+    </div>
+  </footer>
+
+  <script>
+    // Data
+    const products = [
+      {
+        id: 1,
+        name: "Hạt rang Arabica Đà Lạt",
+        price: 159000,
+        image: "https://picsum.photos/seed/arabica/300/300",
+        shortDesc: "Hương vị thanh nhẹ, hậu ngọt, rang vừa.",
+        category: "Hạt rang",
+        badge: "Bán chạy"
+      },
+      {
+        id: 2,
+        name: "Hạt rang Robusta Buôn Ma Thuột",
+        price: 129000,
+        image: "https://picsum.photos/seed/robusta/300/300",
+        shortDesc: "Đậm đà, mạnh mẽ, phù hợp pha phin.",
+        category: "Hạt rang"
+      },
+      {
+        id: 3,
+        name: "Cà phê xay pha phin",
+        price: 99000,
+        image: "https://picsum.photos/seed/phin/300/300",
+        shortDesc: "Xay sẵn, tiện lợi, giữ trọn hương vị.",
+        category: "Cà phê xay"
+      },
+      {
+        id: 4,
+        name: "Cà phê xay pha máy",
+        price: 119000,
+        image: "https://picsum.photos/seed/may/300/300",
+        shortDesc: "Xay mịn, phù hợp máy espresso.",
+        category: "Cà phê xay"
+      },
+      {
+        id: 5,
+        name: "Bình French Press 350ml",
+        price: 179000,
+        image: "https://picsum.photos/seed/frenchpress/300/300",
+        shortDesc: "Dụng cụ pha cà phê kiểu Pháp.",
+        category: "Dụng cụ",
+        badge: "Mới"
+      },
+      {
+        id: 6,
+        name: "Phin nhôm cao cấp",
+        price: 69000,
+        image: "https://picsum.photos/seed/phin/300/300",
+        shortDesc: "Phin nhôm truyền thống, bền đẹp.",
+        category: "Dụng cụ"
+      },
+      {
+        id: 7,
+        name: "Combo hạt rang + phin",
+        price: 209000,
+        image: "https://picsum.photos/seed/combo/300/300",
+        shortDesc: "Tiết kiệm, đủ cho 2 tuần thưởng thức.",
+        category: "Hạt rang",
+        badge: "Ưu đãi"
+      },
+      {
+        id: 8,
+        name: "Cà phê xay Cold Brew",
+        price: 109000,
+        image: "https://picsum.photos/seed/coldbrew/300/300",
+        shortDesc: "Xay thô, pha lạnh, vị dịu nhẹ.",
+        category: "Cà phê xay"
+      },
+      {
+        id: 9,
+        name: "Bình pha Cold Brew 600ml",
+        price: 199000,
+        image: "https://picsum.photos/seed/binhcoldbrew/300/300",
+        shortDesc: "Dụng cụ pha cà phê lạnh tiện lợi.",
+        category: "Dụng cụ"
+      }
+    ];
+
+    // Utils
+    function formatVND(n) {
+      return n.toLocaleString('vi-VN') + "₫";
+    }
+
+    // Cart
+    let cart = JSON.parse(localStorage.getItem('cart') || '{}');
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    function getCartCount() {
+      return Object.values(cart).reduce((a, b) => a + b.qty, 0);
+    }
+    function getCartTotal() {
+      return Object.values(cart).reduce((sum, item) => {
+        const prod = products.find(p => p.id === item.id);
+        return sum + (prod ? prod.price * item.qty : 0);
+      }, 0);
+    }
+    function updateCartBadge() {
+      document.getElementById('cartBadge').textContent = getCartCount();
+    }
+    function renderCartPanel() {
+      const cartItemsDiv = document.getElementById('cartItems');
+      cartItemsDiv.innerHTML = '';
+      if (getCartCount() === 0) {
+        cartItemsDiv.innerHTML = '<div style="text-align:center;color:#6d4c41;margin:32px 0;">Giỏ hàng trống.</div>';
+      } else {
+        Object.values(cart).forEach(item => {
+          const prod = products.find(p => p.id === item.id);
+          if (!prod) return;
+          const div = document.createElement('div');
+          div.className = 'cart-item';
+          div.innerHTML = `
+            <img src="${prod.image}" alt="${prod.name}" loading="lazy">
+            <div class="cart-item-info">
+              <div class="cart-item-name">${prod.name}</div>
+              <div class="cart-item-price">${formatVND(prod.price)}</div>
+              <div class="cart-item-qty">
+                <button class="cart-item-qty-btn" data-action="dec" data-id="${prod.id}" aria-label="Giảm số lượng">-</button>
+                <span>${item.qty}</span>
+                <button class="cart-item-qty-btn" data-action="inc" data-id="${prod.id}" aria-label="Tăng số lượng">+</button>
+              </div>
+            </div>
+            <button class="cart-item-remove" data-action="remove" data-id="${prod.id}" aria-label="Xóa khỏi giỏ">&times;</button>
+          `;
+          cartItemsDiv.appendChild(div);
+        });
+      }
+      document.getElementById('cartTotal').textContent = formatVND(getCartTotal());
+    }
+    function openCartPanel() {
+      document.getElementById('cartPanel').classList.add('active');
+      document.getElementById('cartBackdrop').classList.add('active');
+      renderCartPanel();
+    }
+    function closeCartPanel() {
+      document.getElementById('cartPanel').classList.remove('active');
+      document.getElementById('cartBackdrop').classList.remove('active');
+    }
+    // Product grid
+    function renderProductsGrid(filterName = '', filterCat = '') {
+      const grid = document.getElementById('productsGrid');
+      let filtered = products.filter(p =>
+        (!filterName || p.name.toLowerCase().includes(filterName.toLowerCase())) &&
+        (!filterCat || p.category === filterCat)
+      );
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div style="text-align:center;color:#6d4c41;margin:32px 0;">Không tìm thấy sản phẩm.</div>';
+        return;
+      }
+      grid.innerHTML = '';
+      filtered.forEach(prod => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <img src="${prod.image}" alt="${prod.name}" loading="lazy">
+          ${prod.badge ? `<div class="product-badge">${prod.badge}</div>` : ''}
+          <div class="product-name">${prod.name}</div>
+          <div class="product-desc">${prod.shortDesc}</div>
+          <div class="product-price">${formatVND(prod.price)}</div>
+          <button class="add-cart-btn" data-id="${prod.id}">Thêm vào giỏ</button>
+        `;
+        grid.appendChild(card);
+      });
+    }
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', () => {
+      // Footer year
+      document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+      // Render products
+      renderProductsGrid();
+
+      // Search & filter
+      let searchVal = '', catVal = '';
+      document.getElementById('searchInput').addEventListener('input', e => {
+        searchVal = e.target.value;
+        renderProductsGrid(searchVal, catVal);
+      });
+      document.getElementById('categorySelect').addEventListener('change', e => {
+        catVal = e.target.value;
+        renderProductsGrid(searchVal, catVal);
+      });
+
+      // Add to cart
+      document.getElementById('productsGrid').addEventListener('click', e => {
+        if (e.target.classList.contains('add-cart-btn')) {
+          const id = +e.target.getAttribute('data-id');
+          if (!cart[id]) cart[id] = { id, qty: 1 };
+          else cart[id].qty++;
+          saveCart();
+          updateCartBadge();
+          openCartPanel();
+        }
+      });
+
+      // Cart panel open/close
+      document.getElementById('cartBtn').addEventListener('click', openCartPanel);
+      document.getElementById('cartBackdrop').addEventListener('click', closeCartPanel);
+      document.getElementById('cartCloseBtn').addEventListener('click', closeCartPanel);
+
+      // Cart panel actions
+      document.getElementById('cartItems').addEventListener('click', e => {
+        const btn = e.target;
+        const id = +btn.getAttribute('data-id');
+        if (btn.classList.contains('cart-item-qty-btn')) {
+          if (btn.getAttribute('data-action') === 'inc') cart[id].qty++;
+          else if (btn.getAttribute('data-action') === 'dec') {
+            cart[id].qty--;
+            if (cart[id].qty <= 0) delete cart[id];
+          }
+          saveCart();
+          updateCartBadge();
+          renderCartPanel();
+        }
+        if (btn.classList.contains('cart-item-remove')) {
+          delete cart[id];
+          saveCart();
+          updateCartBadge();
+          renderCartPanel();
+        }
+      });
+
+      // Checkout
+      document.getElementById('checkoutBtn').addEventListener('click', () => {
+        if (getCartCount() === 0) {
+          alert('Giỏ hàng trống.');
+          return;
+        }
+        let msg = 'Cảm ơn bạn đã đặt hàng!\n\nTổng cộng: ' + formatVND(getCartTotal()) + '\n\nSản phẩm:\n';
+        Object.values(cart).forEach(item => {
+          const prod = products.find(p => p.id === item.id);
+          if (prod) msg += `- ${prod.name} x${item.qty}\n`;
+        });
+        alert(msg);
+        cart = {};
+        saveCart();
+        updateCartBadge();
+        renderCartPanel();
+        closeCartPanel();
+      });
+
+      // Badge
+      updateCartBadge();
+
+      // Hero CTA scroll
+      document.getElementById('heroCtaBtn').addEventListener('click', () => {
+        document.getElementById('san-pham').scrollIntoView({ behavior: 'smooth' });
+      });
+
+      // Contact form
+      document.getElementById('contactForm').addEventListener('submit', e => {
+        e.preventDefault();
+        alert('Cảm ơn bạn đã liên hệ!\nChúng tôi sẽ phản hồi sớm nhất.');
+        e.target.reset();
+      });
+
+      // Menu active highlight
+      const navLinks = document.querySelectorAll('nav a');
+      function updateNavActive() {
+        let scrollY = window.scrollY + 80;
+        navLinks.forEach(link => {
+          const sec = document.querySelector(link.getAttribute('href'));
+          if (sec && sec.offsetTop <= scrollY && sec.offsetTop + sec.offsetHeight > scrollY) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+      window.addEventListener('scroll', updateNavActive);
+      updateNavActive();
+    });
+  </script>
+</body>
+</html>
